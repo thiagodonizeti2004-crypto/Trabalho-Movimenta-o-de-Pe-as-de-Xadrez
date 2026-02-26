@@ -1,0 +1,154 @@
+// Estrutura da carta
+struct Carta {
+    char nome[50];
+    int populacao;
+    float area;
+    float pib;
+    int pontosTuristicos;
+    float densidadeDemografica;
+};
+
+int main() {
+
+    struct Carta carta1, carta2;
+    int opcao;
+
+   
+    // Cadastro das cartas
+  
+
+    printf("=== Cadastro da Carta 1 ===\n");
+    printf("Nome do pais: ");
+    scanf(" %[^\n]", carta1.nome);
+
+    printf("Populacao: ");
+    scanf("%d", &carta1.populacao);
+
+    printf("Area: ");
+    scanf("%f", &carta1.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta1.pib);
+
+    printf("Numero de pontos turisticos: ");
+    scanf("%d", &carta1.pontosTuristicos);
+
+    carta1.densidadeDemografica = carta1.populacao / carta1.area;
+
+
+    printf("\n=== Cadastro da Carta 2 ===\n");
+    printf("Nome do pais: ");
+    scanf(" %[^\n]", carta2.nome);
+
+    printf("Populacao: ");
+    scanf("%d", &carta2.populacao);
+
+    printf("Area: ");
+    scanf("%f", &carta2.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta2.pib);
+
+    printf("Numero de pontos turisticos: ");
+    scanf("%d", &carta2.pontosTuristicos);
+
+    carta2.densidadeDemografica = carta2.populacao / carta2.area;
+
+
+  
+    // Menu Interativo
+    
+
+    printf("\n===== MENU DE COMPARACAO =====\n");
+    printf("1 - Populacao\n");
+    printf("2 - Area\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turisticos\n");
+    printf("5 - Densidade Demografica\n");
+    printf("Escolha o atributo para comparacao: ");
+    scanf("%d", &opcao);
+
+
+    printf("\n===== RESULTADO =====\n");
+
+    switch(opcao) {
+
+        case 1: // População
+            printf("Atributo escolhido: Populacao\n");
+            printf("%s: %d\n", carta1.nome, carta1.populacao);
+            printf("%s: %d\n", carta2.nome, carta2.populacao);
+
+            if(carta1.populacao > carta2.populacao) {
+                printf("Vencedor: %s\n", carta1.nome);
+            } else if(carta2.populacao > carta1.populacao) {
+                printf("Vencedor: %s\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+
+        case 2: // Área
+            printf("Atributo escolhido: Area\n");
+            printf("%s: %.2f\n", carta1.nome, carta1.area);
+            printf("%s: %.2f\n", carta2.nome, carta2.area);
+
+            if(carta1.area > carta2.area) {
+                printf("Vencedor: %s\n", carta1.nome);
+            } else if(carta2.area > carta1.area) {
+                printf("Vencedor: %s\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+
+        case 3: // PIB
+            printf("Atributo escolhido: PIB\n");
+            printf("%s: %.2f\n", carta1.nome, carta1.pib);
+            printf("%s: %.2f\n", carta2.nome, carta2.pib);
+
+            if(carta1.pib > carta2.pib) {
+                printf("Vencedor: %s\n", carta1.nome);
+            } else if(carta2.pib > carta1.pib) {
+                printf("Vencedor: %s\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+
+        case 4: // Pontos Turísticos
+            printf("Atributo escolhido: Pontos Turisticos\n");
+            printf("%s: %d\n", carta1.nome, carta1.pontosTuristicos);
+            printf("%s: %d\n", carta2.nome, carta2.pontosTuristicos);
+
+            if(carta1.pontosTuristicos > carta2.pontosTuristicos) {
+                printf("Vencedor: %s\n", carta1.nome);
+            } else if(carta2.pontosTuristicos > carta1.pontosTuristicos) {
+                printf("Vencedor: %s\n", carta2.nome);
+            } else {
+                printf("Empate!\n");
+            }
+            break;
+
+        case 5: // Densidade Demográfica (REGRA INVERTIDA)
+            printf("Atributo escolhido: Densidade Demografica\n");
+            printf("%s: %.2f\n", carta1.nome, carta1.densidadeDemografica);
+            printf("%s: %.2f\n", carta2.nome, carta2.densidadeDemografica);
+
+            // IF ANINHADO (regra especial)
+            if(carta1.densidadeDemografica < carta2.densidadeDemografica) {
+                printf("Vencedor: %s\n", carta1.nome);
+            } else {
+                if(carta2.densidadeDemografica < carta1.densidadeDemografica) {
+                    printf("Vencedor: %s\n", carta2.nome);
+                } else {
+                    printf("Empate!\n");
+                }
+            }
+            break;
+
+        default:
+            printf("Opcao invalida! Tente novamente.\n");
+    }
+
+    return 0;
+}
