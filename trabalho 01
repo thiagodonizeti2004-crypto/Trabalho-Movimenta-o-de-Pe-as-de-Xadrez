@@ -1,0 +1,54 @@
+int main() {
+
+    // ================================
+    // DECLARAÇÃO DAS VARIÁVEIS
+    // ================================
+
+    int casasBaixo = 2;       // Quantidade de casas para baixo
+    int casasEsquerda = 1;    // Quantidade de casas para a esquerda
+
+    int i;                    // Controle do loop for
+    int j;                    // Controle do loop while
+
+    printf("Cima\n");
+    printf("Direita\n");
+    printf("Baixo\n");
+
+    // Linha em branco para separar
+    printf("\n");
+
+    // MOVIMENTO DO CAVALO
+  
+    /*
+        O Cavalo se move em "L":
+        - Primeiro: duas casas para baixo
+        - Depois: uma casa para a esquerda
+
+        Para isso utilizamos:
+        - Um loop FOR (movimento vertical)
+        - Um loop WHILE (movimento horizontal)
+        
+        O while está aninhado dentro do for,
+        atendendo ao requisito de loops aninhados.
+    */
+
+    for (i = 0; i < casasBaixo; i++) {
+        
+        // Movimento para baixo
+        printf("Baixo\n");
+
+        // Após completar o movimento vertical,
+        // executamos o movimento horizontal.
+        if (i == casasBaixo - 1) {
+            
+            j = 0;
+            
+            while (j < casasEsquerda) {
+                printf("Esquerda\n");
+                j++;
+            }
+        }
+    }
+
+    return 0;
+}
